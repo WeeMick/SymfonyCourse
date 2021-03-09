@@ -3,6 +3,12 @@
 {% block title %}Hello PostController!{% endblock %}
 
 {% block body %}
+    {# read and display just one flash message type #}
+    {% for message in app.flashes('success') %}
+        <div class="alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <h2>List of all posts</h2>
     <table class="table table-striped">
         <thead>
@@ -22,7 +28,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('post.delete', {id: post.id}) }}">Delete</a>
+                    <a class="text text-danger" href="{{ path('post.delete', {id: post.id}) }}">Delete</a>
                 </td>
             </tr>
         {% endfor %}

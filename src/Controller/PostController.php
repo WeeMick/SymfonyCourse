@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Form\PostType;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,15 +39,24 @@ class PostController extends AbstractController
     public function create(Request $request) {
         // create new post with title
         $post = new Post();
-        $post->setTitle('This will be title');
+//        $post->setTitle('This will be title');
 
-        // entity manager
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($post);
-        $em->flush();
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            dump($post);
+            // entity manager
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('post.index'));
+        }
 
         // return a response
-        return new Response('Post was created');
+//        return new Response('Post was created');
 
     }
 
@@ -79,6 +89,7 @@ class PostController extends AbstractController
         $em->remove($post);
         $em->flush();
 
+        $this->addFlash('success', 'Post was removed');
         return $this->redirect($this->generateUrl('post.index'));
     }
 }
