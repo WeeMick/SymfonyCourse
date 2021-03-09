@@ -45,7 +45,7 @@ class PostController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             dump($post);
             // entity manager
             $em = $this->getDoctrine()->getManager();
