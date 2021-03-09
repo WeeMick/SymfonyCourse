@@ -23,10 +23,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('custom', {name: 'wee mick'}) }}">Greet wee mick</a>
                 </li>
+                {%  if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item float-right">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                </li>
+                {%  endif %}
 
             </ul>
         </div>

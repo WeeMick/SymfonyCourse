@@ -23,15 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80e8170-40fd-4a24-bc7b-08d0ad3be66b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/SymfonyCourse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SymfonyCourse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +139,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615211016747</updated>
-      <workItem from="1615211017844" duration="20448000" />
+      <workItem from="1615211017844" duration="21299000" />
     </task>
     <servers />
   </component>
@@ -168,9 +162,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="740" y="335" key="FileChooserDialogImpl/1920.598.1536.832/-1920.15.1920.1040/0.0.1920.1160@0.0.1920.1160" timestamp="1615244617188" />
-    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1615223076639">
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1615321221013">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/-1920.15.1920.1040/1920.598.1536.824/0.0.1920.1160@0.0.1920.1160" timestamp="1615321221013" />
     <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/1920.598.1536.832/-1920.15.1920.1040/0.0.1920.1160@0.0.1920.1160" timestamp="1615223076639" />
   </component>
 </project>
