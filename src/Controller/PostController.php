@@ -46,9 +46,24 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($post);
             // entity manager
             $em = $this->getDoctrine()->getManager();
+
+            /** @var @var UploadedFile $file */
+            $file = $request->files->get('post')['attachment'];
+
+            if($file) {
+                $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
+
+                $file->move(
+                    // TODO: get target directory
+                    $this->getParameter('uploads_dir'),
+                    $filename
+                );
+
+                $post->setImage($filename);
+            }
+
             $em->persist($post);
             $em->flush();
 
@@ -56,7 +71,9 @@ class PostController extends AbstractController
         }
 
         // return a response
-//        return new Response('Post was created');
+        return $this->render('post/create.html.twig', [
+            'form' => $form->createView()
+        ]);
 
     }
 
