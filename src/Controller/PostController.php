@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use App\Services\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,9 +36,10 @@ class PostController extends AbstractController
     /**
      * @Route("/create", name="create")
      * @param Request $request
+     * @param FileUploader $fileUploader
      * @return Response
      */
-    public function create(Request $request) {
+    public function create(Request $request, FileUploader $fileUploader) {
         // create new post with title
         $post = new Post();
 //        $post->setTitle('This will be title');
@@ -53,19 +56,12 @@ class PostController extends AbstractController
             $file = $request->files->get('post')['attachment'];
 
             if($file) {
-                $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
-
-                $file->move(
-                    // TODO: get target directory
-                    $this->getParameter('uploads_dir'),
-                    $filename
-                );
+                $filename = $fileUploader->uploadFile($file);
 
                 $post->setImage($filename);
+                $em->persist($post);
+                $em->flush();
             }
-
-            $em->persist($post);
-            $em->flush();
 
             return $this->redirect($this->generateUrl('post.index'));
         }
@@ -98,7 +94,7 @@ class PostController extends AbstractController
      * @Route("/delete/{id}", name="delete")
      * @param $id
      * @param PostRepository $postRepository
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     public function remove($id, PostRepository $postRepository) {
         $post = $postRepository->find($id);
